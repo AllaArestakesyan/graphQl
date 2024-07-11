@@ -17,6 +17,9 @@ export class UserService {
     return await this.repo.find({
       relations:{
         posts:{
+          comments:{
+            user:true
+          },
           user:{
             posts:{
               comments:true

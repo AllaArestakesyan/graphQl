@@ -26,7 +26,12 @@ export class PostService {
   async findAll() {
     return await this.repo.find({
       relations:{
-        user:true
+        user:{
+          comments:true
+        },
+        comments:{
+          user:true
+        }
       }
     });
   }

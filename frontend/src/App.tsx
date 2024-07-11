@@ -6,6 +6,43 @@ const GET_ITEMS = gql`
     user{
       id
       name
+      surname
+      email
+      age
+      posts{
+        id
+        title
+        body
+        comments{
+          id
+          text
+          user{
+            id
+            name
+            surname
+            email
+          }
+        }
+      }
+    }
+    post{
+      id
+      title
+      body
+      user{
+        id
+        name
+        surname
+      }
+      comments{
+        id
+        text
+        user{
+          id
+          name
+          surname
+        }
+      }
     }
   }
 `;
@@ -15,13 +52,20 @@ function App() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {':('}</p>;
+  console.log(data);
 
   return (
     <div>
-      <h1>Items</h1>
+      <h1>Users</h1>
       <ul>
-        {data.items.map((item:any, index:any) => (
-          <li key={index}>{item.name}</li>
+        {data?.user?.map((item:any) => (
+          <li key={item.id}>{item.name} {item.surname}</li>
+        ))}
+      </ul>
+      <h1>Posts</h1>
+      <ul>
+        {data?.post?.map((item:any) => (
+          <li key={item.id}><b>{item.title}</b>-  {item.body} - <small><em>{item.user.name} {item.user.surname}</em></small></li>
         ))}
       </ul>
     </div>
