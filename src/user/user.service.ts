@@ -16,16 +16,13 @@ export class UserService {
   async findAll() {
     return await this.repo.find({
       relations:{
-        books:{
+        posts:{
           user:{
             posts:{
               comments:true
             },
             comments:true,
           }
-        },
-        posts:{
-          user:true
         },
         comments:{
           post:true,

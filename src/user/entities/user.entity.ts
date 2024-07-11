@@ -1,5 +1,4 @@
 import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
-import { Book } from 'src/book/entities/book.entity';
 import { Comment } from 'src/comment/entities/comment.entity';
 import { Post } from 'src/post/entities/post.entity';
 import { Entity, OneToMany } from 'typeorm';
@@ -28,11 +27,6 @@ export class User {
   @Column()
   @Field(() => Number)
   age:number
-
-
-  @OneToMany(type=>Book, book=>book.user)
-  @Field(() => [Book], { nullable: true })
-  books:Book[]
 
   @OneToMany(type=>Post, post=>post.user)
   @Field(() => [Post], { nullable: true })
