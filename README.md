@@ -1,0 +1,2 @@
+# graphQl
+nestJs, Resct, Typescrpt
