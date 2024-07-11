@@ -1,0 +1,116 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Post {
+  id: Int!
+  title: String!
+  body: String!
+  user: User
+  comments: [Comment!]
+}
+
+type Comment {
+  id: Int!
+  text: String!
+  user: User
+  post: Post
+}
+
+type User {
+  id: Int!
+  name: String!
+  surname: String!
+  email: String!
+  age: Float!
+  books: [Book!]
+  posts: [Post!]
+  comments: [Comment!]
+}
+
+type Book {
+  id: Int!
+  title: String!
+  price: Float!
+  user: User
+}
+
+type Query {
+  book: [Book!]!
+  bookById(id: Int!): Book!
+  user: [User!]!
+  userById(id: Int!): User!
+  post: [Post!]!
+  postById(id: Int!): Post!
+  comment: [Comment!]!
+  commentById(id: Int!): Comment!
+}
+
+type Mutation {
+  createBook(createBookInput: CreateBookInput!): Book!
+  updateBook(updateBookInput: UpdateBookInput!): Book!
+  removeBook(id: Int!): Book!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post!
+  createComment(createCommentInput: CreateCommentInput!): Comment!
+  updateComment(updateCommentInput: UpdateCommentInput!): Comment!
+  removeComment(id: Int!): Comment!
+}
+
+input CreateBookInput {
+  title: String!
+  price: Float!
+  userId: Float!
+}
+
+input UpdateBookInput {
+  title: String
+  price: Float
+  userId: Float
+  id: Int!
+}
+
+input CreateUserInput {
+  name: String!
+  surname: String!
+  email: String!
+  age: Float!
+}
+
+input UpdateUserInput {
+  name: String!
+  surname: String!
+  email: String!
+  age: Float!
+  id: Int!
+}
+
+input CreatePostInput {
+  title: String!
+  body: String!
+  userId: Float!
+}
+
+input UpdatePostInput {
+  title: String
+  body: String
+  userId: Float
+  id: Int!
+}
+
+input CreateCommentInput {
+  text: String!
+  userId: Float!
+  postId: Float!
+}
+
+input UpdateCommentInput {
+  text: String
+  userId: Float
+  postId: Float
+  id: Int!
+}
